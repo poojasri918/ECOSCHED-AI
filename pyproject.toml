@@ -1,0 +1,7 @@
+[project]
+name="ecosched-ai"
+version="0.1.0"
+description="EcoSched AI OpenEnv Project"
+requires-python=">=3.8"
+
+dependencies=[ "flask","openai","requests"]
