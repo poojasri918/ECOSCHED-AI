@@ -60,6 +60,21 @@ ecosched/
 
 ---
 
+## 🎥 Demo
+
+Run the project locally and open:
+
+http://127.0.0.1:5000
+
+### Features shown in UI:
+- AI vs Baseline comparison
+- Carbon emission graph
+- Temperature trends
+- AI decision breakdown (Run / Delay / Shift)
+- Sustainability score
+
+---
+
 
 ## 🧠 Key Features
 
