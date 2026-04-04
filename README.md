@@ -38,23 +38,23 @@ EcoSched AI uses a decision-based system to:
 
 ecosched/ 
 
-│── app.py              # Flask API + UI 
+│── app.py                  # Flask API + UI 
 
-│── env.py              # Environment simulation 
+│── env.py                  # Environment simulation 
 
-│── inference.py        # AI decision logic 
+│── inference.py            # AI decision logic 
 
-│── evaluate.py         # AI vs baseline comparison 
+│── evaluate.py             # AI vs baseline comparison 
 
-│── grader.py           # Scoring system 
+│── grader.py               # Scoring system 
 
-│── train_dqn.py        # RL training (if used)
+│── train_dqn.py            # RL training (if used)
 
-│── openenv.yaml        # Environment spec 
+│── openenv.yaml            # Environment spec 
 
-│── requirements.txt    # Dependencies 
+│── requirements.txt        # Dependencies 
 
-│── Dockerfile          # Container setup 
+│── Dockerfile              # Container setup 
 
 │── README.md
 
