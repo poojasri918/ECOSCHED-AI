@@ -102,15 +102,39 @@ This system ensures fair comparison by introducing variability so that baseline 
 
 ---
 
+## 🏗️ System Architecture
+
+- Backend: Flask API (simulation engine)
+- AI Logic: Rule-based decision + adaptive behavior
+- Frontend: HTML + Chart.js visualization
+- Data Source: Real-time UK carbon intensity API + simulated regions
+
 ## 🔌 API Endpoints
 
--GET /data --> Run full simulations
+### GET /data
+Runs full simulation
 
--GET/reset --> Reset environment
+Query params:
+- task: easy | medium | hard
+- region: uk | india | us | low | high
 
--POST/step --> Take action (0,1,2)
+---
 
--GET/state --> Get current state
+### GET /reset
+Resets environment
+
+---
+
+### POST /step
+Body:
+{
+  "action": 0 | 1 | 2
+}
+
+---
+
+### GET /state
+Returns current state
 
 
 ## ⚙️ How to Run
@@ -148,26 +172,27 @@ The system is intentionally designed so that AI does not always win, ensuring re
 
 ```
 
-##🎮 Action Space
+## 🎮 Action Space
 
--0 --> Delay workload
-
--1 --> Run workload
-
--2 --> Shift workload
+- 0 → Delay workload (reduces cost impact)
+- 1 → Run workload (immediate execution)
+- 2 → Shift workload (optimize for low carbon periods)
 
 ---
 
 
-##🚀 Future Improvements
+## 🚀 Future Improvements
 
--Integrate reinforcement learning (DQN/PPO)
-
--Use real cloud workload datasets
-
--Multi-region optimization
-
--Deploy as scalable service
+- Integrate real reinforcement learning (DQN / PPO)
+- Use real cloud workload datasets
+- Add multi-region scheduling optimization
+- Deploy as SaaS dashboard
 
 ---
+
+## ⚠️ Limitations
+
+- Uses simplified simulation instead of real data center workload
+- AI is rule-based (not fully trained RL model)
+- Carbon data is partially simulated outside UK
 
