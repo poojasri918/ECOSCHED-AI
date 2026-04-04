@@ -2,15 +2,17 @@
 name = "ecosched-ai"
 version = "0.1.0"
 description = "Eco-friendly scheduling AI environment for OpenEnv"
-readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.8"
+
 dependencies = [
-    "openenv-core",
-    "fastapi>=0.104.0",
-    "pydantic>=2.0.0",
-    "uvicorn>=0.24.0"
+    "flask",
+    "numpy",
+    "requests"
 ]
 
+[project.scripts]
+server = "server.app:app"
+
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
