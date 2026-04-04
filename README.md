@@ -64,9 +64,13 @@ This system ensures fair comparison by introducing variability so that baseline 
 ## 🔌 API Endpoints
 
 -GET /data --> Run full simulations
+
 -GET/reset --> Reset environment
+
 -POST/step --> Take action (0,1,2)
+
 -GET/state --> Get current state
+
 
 ## ⚙️ How to Run
 
@@ -104,12 +108,21 @@ The system is intentionally designed so that AI does not always win, ensuring re
 ```
 
 ##🎮 Action Space
+
 -0 --> Delay workload
+
 -1 --> Run workload
+
 -2 --> Shift workload
 
+
 ##🚀 Future Improvements
+
 -Integrate reinforcement learning (DQN/PPO)
+
 -Use real cloud workload datasets
+
 -Multi-region optimization
+
 -Deploy as scalable service
+
