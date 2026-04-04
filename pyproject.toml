@@ -1,4 +1,7 @@
-#refresh
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "ecosched-ai"
 version = "0.1.0"
