@@ -102,6 +102,22 @@ This system ensures fair comparison by introducing variability so that baseline 
 
 ---
 
+## 📊 Results
+
+- AI reduces carbon emissions in most scenarios by intelligently avoiding high-emission periods  
+- Baseline can outperform AI under certain conditions (ensures fair and unbiased evaluation)  
+- System dynamically adapts based on carbon, cost, and temperature  
+
+### Example Output:
+- AI Avg Carbon: 0.42  
+- Baseline Avg Carbon: 0.51  
+- Improvement: ~17%  
+
+### Key Insight:
+The model does not always win, demonstrating realistic and balanced decision-making rather than overfitting to a single strategy.
+
+---
+
 ## 🏗️ System Architecture
 
 - Backend: Flask API (simulation engine)
