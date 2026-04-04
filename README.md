@@ -71,7 +71,7 @@ This system ensures fair comparison by introducing variability so that baseline 
 ## ⚙️ How to Run
 
 ```bash
-pip install flask numpy requests
+pip install -r requirements.txt
 python app.py
 
 Open:
@@ -100,3 +100,16 @@ The system is intentionally designed so that AI does not always win, ensuring re
 - Python (Flask)
 - JavaScript (Chart.js)
 - Simulation-based AI logic
+
+```
+
+##🎮 Action Space
+-0 --> Delay workload
+-1 --> Run workload
+-2 --> Shift workload
+
+##🚀 Future Improvements
+-Integrate reinforcement learning (DQN/PPO)
+-Use real cloud workload datasets
+-Multi-region optimization
+-Deploy as scalable service
