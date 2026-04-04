@@ -208,3 +208,5 @@ The system is intentionally designed so that AI does not always win, ensuring re
 - AI is rule-based (not fully trained RL model)
 - Carbon data is partially simulated outside UK
 
+## NOTE : Environment simulation and evaluation logic are integrated within app.py for simplicity and efficiency.
+
