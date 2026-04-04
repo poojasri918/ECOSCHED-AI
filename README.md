@@ -38,13 +38,9 @@ EcoSched AI uses a decision-based system to:
 
 ecosched/ 
 
-│── app.py                  # Flask API + UI 
-
-│── env.py                  # Environment simulation 
+│── app.py                  # Flask API + UI +environment+evaluation logic
 
 │── inference.py            # AI decision logic 
-
-│── evaluate.py             # AI vs baseline comparison 
 
 │── grader.py               # Scoring system 
 
