@@ -1,0 +1,5 @@
+flask
+numpy
+gymnasium
+stable-baselines3
+matplotlib

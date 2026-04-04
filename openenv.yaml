@@ -1,0 +1,32 @@
+name: EcoSchedAI
+description: AI system for carbon-aware workload scheduling in data centers
+
+version: 1.0
+
+environment:
+  observations:
+    carbon: float
+    temp: float
+    price: float
+    time: int
+  
+  actions:
+    0: delay
+    1: run
+    2: shift
+
+  reward:
+    description: Balances carbon emissions, thermal load, and cost efficiency
+
+evaluation:
+  metric: average_carbon_reduction
+  goal: minimize
+
+constraints:
+  max_steps: 50
+
+tags:
+  - sustainability
+  - ai
+  - optimization
+  - energy
