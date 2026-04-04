@@ -37,6 +37,7 @@ EcoSched AI uses a decision-based system to:
 ## 📁 Project Structure
 
 ecosched/ 
+
 │── app.py              # Flask API + UI 
 
 │── env.py              # Environment simulation 
