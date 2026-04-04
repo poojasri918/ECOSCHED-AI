@@ -2,7 +2,6 @@
 
 ## 🚀 One-line Pitch
 EcoSched AI intelligently schedules workloads by deciding when to run, delay, or shift tasks to minimize carbon emissions in real time.
-EcoSched AI is an intelligent scheduling system designed to reduce carbon emissions in data centers by dynamically managing workloads based on real-time environmental conditions.
 
 ---
 
@@ -34,6 +33,32 @@ EcoSched AI uses a decision-based system to:
   - Balance between perfomance,cost, and sustainability
 
 ---
+
+## 📁 Project Structure
+
+ecosched/ 
+│── app.py              # Flask API + UI 
+
+│── env.py              # Environment simulation 
+
+│── inference.py        # AI decision logic 
+
+│── evaluate.py         # AI vs baseline comparison 
+
+│── grader.py           # Scoring system 
+
+│── train_dqn.py        # RL training (if used)
+
+│── openenv.yaml        # Environment spec 
+
+│── requirements.txt    # Dependencies 
+
+│── Dockerfile          # Container setup 
+
+│── README.md
+
+---
+
 
 ## 🧠 Key Features
 
