@@ -4,6 +4,16 @@ EcoSched AI is an intelligent scheduling system designed to reduce carbon emissi
 
 ---
 
+## 🧠 What Makes This Special
+
+- Real-time carbon intensity simulation (UK API + dynamic environments)
+- AI vs Baseline comparison (fair evaluation, not biased)
+- Multi-factor optimization (carbon + cost + temperature)
+- Interactive visualization dashboard
+- Task difficulty modes (easy / medium / hard)
+
+---
+
 ## 🚀 Problem
 
 Modern data centers consume massive energy and contribute significantly to carbon emissions. Static scheduling fails to adapt to fluctuating carbon intensity, energy cost, and thermal conditions.
