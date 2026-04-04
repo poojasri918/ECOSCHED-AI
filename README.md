@@ -115,6 +115,8 @@ The system is intentionally designed so that AI does not always win, ensuring re
 
 -2 --> Shift workload
 
+---
+
 
 ##🚀 Future Improvements
 
@@ -125,4 +127,6 @@ The system is intentionally designed so that AI does not always win, ensuring re
 -Multi-region optimization
 
 -Deploy as scalable service
+
+---
 
