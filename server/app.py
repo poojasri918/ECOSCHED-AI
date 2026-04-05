@@ -1,8 +1,16 @@
-from flask import Flask, jsonify, render_template_string, request
 import numpy as np
 import random
-import webbrowser
 import requests
+import uvicorn
+from fastapi import FastAPI,Request
+from fastapi.responses import HTMLResponse,JSONResponse
+
+app = FastAPI()
+
+@app.get("/",response_class=HTMLResponse)
+async def home():
+    return HTML
+
 
 # ---------------- ADD: REPRODUCIBILITY (REQUIRED FOR TOP-TIER) ----------------
 random.seed(42)
@@ -68,8 +76,6 @@ def get_real_carbon(region="UK"):
 
     except Exception:
         return random.uniform(0.3, 0.7)
-
-app = Flask(__name__)
 
 # ---------------- ENV ----------------
 class EcoEnv:
@@ -211,11 +217,11 @@ def compute_score(carbon_list):
 
 # ---------------- DATA API ----------------
 
-@app.route('/data')
-def data():
+@app.get('/data')
+async def data(request:Request):
 
-    task = request.args.get("task", "medium")
-    region = request.args.get("region","UK").lower()
+    task = request.query_params.get("task", "medium")
+    region = request.query_params.get("region","UK").lower()
 
     env = EcoEnv()
     env.set_task(task)
@@ -273,7 +279,7 @@ def data():
         state, _, _, _ = env.step(action)
         baseline_carbon.append(state["carbon"])
 
-    return jsonify({
+    return {
         "ai_avg": float(np.mean(ai_carbon)),
         "base_avg": float(np.mean(baseline_carbon)),
         "ai_carbon": ai_carbon,
@@ -284,40 +290,40 @@ def data():
         # ---------------- ADD: SCORES ----------------
         "ai_score": compute_score(ai_carbon),
         "baseline_score": compute_score(baseline_carbon)
-    })
+    }
 
     # ---------------- EXTRA API (REQUIRED) ----------------
-@app.route('/reset')
+@app.get('/reset')
 def reset_env():
     global env
     env = EcoEnv()
-    return jsonify(env.state())
+    return (env.state())
 
-@app.route('/step', methods=['POST'])
-def step_env():
+@app.get('/step')
+async def step_env(request:Request):
     global env
 
-    data = request.get_json() or {}
+    data = await request.json() if request else{}
     action = int(data.get("action", 1))
 
     state, reward, done, _ = env.step(action)
-    return jsonify({
+    return {
         "state": state,
         "reward": reward,
         "done": done
-    })
+    }
 
-@app.route('/state')
+@app.get('/state')
 def get_state():
-    return jsonify(env.state())
+    return(env.state())
 
 
 # ---------------- ADD: CONFIGURATION API (TOP-TIER REQUIREMENT) ----------------
-@app.route('/configure', methods=['POST'])
-def configure_env():
+@app.get('/configure')
+async def configure_env(request:Request):
     global env
 
-    data = request.get_json() or {}
+    data = await request.json() if request else {}
 
     task = data.get("task", "medium")
     region = data.get("region", "UK").lower()
@@ -327,16 +333,16 @@ def configure_env():
     env.region = region
     env.reset()
 
-    return jsonify({
+    return {
         "message": "configured",
         "task": task,
         "region": region,
         "state": env.state()
-    })
+    }
 
 
 # ---------------- ADD: EVALUATION API (CRITICAL FOR JUDGING) ----------------
-@app.route('/evaluate')
+@app.get('/evaluate')
 def evaluate():
 
     task = request.args.get("task", "medium")
@@ -356,7 +362,7 @@ def evaluate():
             action = 2
         elif env.price > 0.7:
             action = 0
-        elif anv.temp>0.7:
+        elif env.temp>0.7:
             action=2
         else:
             if random.random()<0.3:
@@ -378,17 +384,17 @@ def evaluate():
         state, _, _, _ = env.step(action)
         baseline_carbon.append(state["carbon"])
 
-    return jsonify({
+    return {
         "ai_score": compute_score(ai_carbon),
         "baseline_score": compute_score(baseline_carbon),
         "improvement": compute_score(ai_carbon) - compute_score(baseline_carbon)
-    })
+    }
 
 
 # ---------------- ADD: HEALTH CHECK (PRODUCTION TOUCH) ----------------
-@app.route('/health')
+@app.get('/health')
 def health():
-    return jsonify({"status": "ok"})
+    return {"status": "ok"}
 
     # ---------------- UI ----------------
 HTML = """
@@ -713,11 +719,9 @@ async function runSim(){
 </html>
 """
 
-# ---------------- ROUTE ----------------
-@app.route('/')
-def home():
-    return render_template_string(HTML)
-
 # ---------------- RUN ----------------
+def main():
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=7860)
+    main()
