@@ -1,4 +1,19 @@
+---
+
+title: EcoSched AI  
+emoji: 🤖  
+colorFrom: green  
+colorTo: blue  
+sdk: docker  
+app_file: server/app.py  
+pinned: false  
+
+---
+
 # 🌱 EcoSched AI
+
+---
+
 
 ## 🚀 One-line Pitch
 EcoSched AI intelligently schedules workloads by deciding when to run, delay, or shift tasks to minimize carbon emissions in real time.
