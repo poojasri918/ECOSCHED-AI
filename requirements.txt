@@ -1,5 +1,4 @@
-flask
+fastapi
+uvicorn
 numpy
-gymnasium
-stable-baselines3
-matplotlib
+requests
