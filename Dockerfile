@@ -2,11 +2,14 @@ FROM python:3.10
 
 WORKDIR /app
 
+# Copy all files
 COPY . .
 
-RUN pip install flask numpy requests
-RUN pip install .
+# Install dependencies directly
+RUN pip install --no-cache-dir fastapi uvicorn openenv-core>=0.2.0 requests numpy flask
 
-EXPOSE 5000
+# Expose the port
+EXPOSE 8000
 
-CMD ["python", "app.py"]
+# Start the application using the 'main' function we will create
+CMD ["python", "-c", "from server.app import main; main()"]
