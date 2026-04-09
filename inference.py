@@ -19,9 +19,9 @@ def step_env(action):
 
 # ---------------- POLICY (SMART BUT FAIR) ----------------
 def policy(state):
-    carbon = state["carbon"]
-    temp = state["temp"]
-    price = state["price"]
+    carbon = state.get["carbon",0.5]
+    temp = state.get["temp",0.5]
+    price = state.get["price",0.5]
 
     # balanced decision (not biased)
     if carbon > 0.7 and price > 0.6:
