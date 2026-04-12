@@ -1,227 +1,221 @@
----
+🌱 EcoSched AI
 
-title: EcoSched AI  
-emoji: 🤖  
-colorFrom: green  
-colorTo: blue  
-sdk: docker  
-app_file: server/app.py  
-pinned: false  
+Intelligent Carbon-Aware Workload Scheduler
 
 ---
 
-# 🌱 EcoSched AI
+🚀 One-line Pitch
 
----
-
-
-## 🚀 One-line Pitch
 EcoSched AI intelligently schedules workloads by deciding when to run, delay, or shift tasks to minimize carbon emissions in real time.
 
 ---
 
-## 🧠 What Makes This Special
+🌟 What Makes This Special
 
-- Real-time carbon intensity simulation (UK API + dynamic environments)
-- AI vs Baseline comparison (fair evaluation, not biased)
-- Multi-factor optimization (carbon + cost + temperature)
-- Interactive visualization dashboard
-- Task difficulty modes (easy / medium / hard)
-
----
-
-## 🚀 Problem
-
-Modern data centers consume massive energy and contribute significantly to carbon emissions. Static scheduling fails to adapt to fluctuating carbon intensity, energy cost, and thermal conditions.This leads to inefficient energy usage and higher environmental impact.
+- ⚡ Real-time carbon intensity simulation (multi-region support)
+- 🤖 AI vs Baseline comparison (fair, unbiased evaluation)
+- 📊 Multi-factor optimization (carbon + cost + temperature)
+- 📈 Interactive dashboard with live graphs
+- 🎯 Action-based decision system (Run / Delay / Shift)
+- 🔄 Real-time adaptive system (dynamic updates)
 
 ---
 
-## 💡 Solution
+❗ Problem
+
+Modern data centers consume massive energy and contribute significantly to carbon emissions.
+
+Static scheduling fails to adapt to:
+
+- Changing carbon intensity
+- Fluctuating electricity prices
+- Thermal conditions
+
+➡️ Result: inefficient energy usage and higher environmental impact.
+
+---
+
+💡 Solution
 
 EcoSched AI uses a decision-based system to:
 
-- Monitor carbon intensity, temperature, and cost
+- Monitor:
+  
+  - Carbon intensity
+  - Temperature
+  - Energy cost
+
 - Dynamically decide whether to:
-  - Run workloads
-  - Delay execution
-  - Shift workloads to better conditions
-  - Balance between perfomance,cost, and sustainability
+  
+  - ▶️ Run workloads
+  - ⏸ Delay execution
+  - 🔁 Shift workloads to better conditions
+
+- Balance:
+  
+  - Performance
+  - Cost
+  - Sustainability
 
 ---
 
-## 📁 Project Structure
-
-ecosched/ 
-
-│── app.py                  # Flask API + UI +environment+evaluation logic
-
-│── inference.py            # AI decision logic 
-
-│── grader.py               # Scoring system 
-
-│── train_dqn.py            # RL training (if used)
-
-│── openenv.yaml            # Environment spec 
-
-│── requirements.txt        # Dependencies 
-
-│── Dockerfile              # Container setup 
-
-│── README.md
-
----
-
-## 🎥 Demo
-
-Run the project locally and open:
-
-http://127.0.0.1:5000
-
-### Features shown in UI:
-- AI vs Baseline comparison
-- Carbon emission graph
-- Temperature trends
-- AI decision breakdown (Run / Delay / Shift)
-- Sustainability score
-
----
-
-
-## 🧠 Key Features
-
-- Real-time carbon-aware simulation
-- Multi-objective optimization (carbon + cost + thermal)
-- Job scheduling with deadlines
-- AI vs Baseline comparison
-- Explainable decision insights
-- Real-time decision adaptation
-
----
-
-## 📊 Evaluation
-
-The system compares:
-
-- AI-driven scheduling
-- Baseline heuristic scheduling
-
-Metrics:
-- Average carbon usage
-- Sustainability score
-
-This system ensures fair comparison by introducing variability so that baseline can outperform AI in certain scenarios.
-
----
-
-## 📊 Results
-
-- AI reduces carbon emissions in most scenarios by intelligently avoiding high-emission periods  
-- Baseline can outperform AI under certain conditions (ensures fair and unbiased evaluation)  
-- System dynamically adapts based on carbon, cost, and temperature  
-
-### Example Output:
-- AI Avg Carbon: 0.42  
-- Baseline Avg Carbon: 0.51  
-- Improvement: ~17%  
-
-### Key Insight:
-The model does not always win, demonstrating realistic and balanced decision-making rather than overfitting to a single strategy.
-
----
-
-## 🏗️ System Architecture
+🧠 System Architecture
 
 - Backend: Flask API (simulation engine)
-- AI Logic: Rule-based decision + adaptive behavior
-- Frontend: HTML + Chart.js visualization
-- Data Source: Real-time UK carbon intensity API + simulated regions
+- AI Logic: Rule-based + adaptive decision system
+- Frontend: React + Vite + Chart.js
+- Visualization: Real-time graphs
+- Containerization: Docker
+- Deployment: Hugging Face Spaces
 
-## 🔌 API Endpoints
+---
 
-### GET /data
+📡 API Endpoints
+
+"GET /data"
+
 Runs full simulation
 
-Query params:
-- task: easy | medium | hard
-- region: uk | india | us | low | high
+Query Params:
+
+- "task": easy | medium | hard
+- "region": uk | india | us | low | high
 
 ---
 
-### GET /reset
-Resets environment
+"POST /step"
 
----
+Executes one step
 
-### POST /step
 Body:
+
 {
   "action": 0 | 1 | 2
 }
 
 ---
 
-### GET /state
-Returns current state
+"GET /state"
 
-
-## ⚙️ How to Run
-
-```bash
-pip install -r requirements.txt
-python app.py
-
-Open:
-http://127.0.0.1:5000
+Returns current system state
 
 ---
 
-🏆 Why It Matters
+"GET /reset"
+
+Resets environment
+
+---
+
+📊 Features in UI
+
+- AI vs Baseline comparison
+- Carbon emission graph
+- Price trend graph
+- Temperature trend graph
+- Decision logs
+- Sustainability score
+- Live system metrics
+
+---
+
+📁 Project Structure
+
+ecosched/
+│
+├── server/
+│   └── app.py              # Flask backend
+│
+├── ecosched-dashboard/
+│   ├── src/                # React frontend
+│   └── package.json
+│
+├── inference.py            # AI decision logic
+├── grader.py               # Evaluation system
+├── openenv.yaml            # Environment config
+├── requirements.txt        # Python dependencies
+├── Dockerfile              # Container setup
+├── pyproject.toml
+└── README.md
+
+---
+
+⚙️ How to Run Locally
+
+🔹 Backend (Flask)
+
+pip install -r requirements.txt
+python server/app.py
+
+Runs on:
+👉 http://127.0.0.1:5000
+
+---
+
+🔹 Frontend (React + Vite)
+
+cd ecosched-dashboard
+npm install
+npm run dev
+
+Runs on:
+👉 http://localhost:5173
+
+---
+
+🐳 Docker Setup
+
+docker build -t ecosched-ai .
+docker run -p 8000:8000 ecosched-ai
+
+Runs on:
+👉 http://localhost:8000
+
+---
+
+🌐 Deployment
+
+- GitHub: https://github.com/poojasri918/ECOSCHED-AI
+- Hugging Face Space: https://huggingface.co/spaces/pooja-918/ecosched-ai
+
+---
+
+📈 Example Output
+
+- AI Avg Carbon: 0.42
+- Baseline Avg Carbon: 0.51
+- Improvement: ~17%
+
+---
+
+🔍 Key Insight
+
+The model does not always win — ensuring realistic, unbiased evaluation rather than overfitting to a single strategy.
+
+---
+
+🎯 Why It Matters
 
 EcoSched AI demonstrates how intelligent scheduling can:
 
-- Reduce emissions
-- Improve efficiency
-- Adapt to real-world variability
+- 🌍 Reduce carbon emissions
+- ⚡ Improve efficiency
+- 🔁 Adapt to real-world variability
 
 ---
 
-🎯 Design Philosophy
-
-The system is intentionally designed so that AI does not always win, ensuring realistic evaluation under varying conditions.
-
----
-
-📌 Tech Stack
+🧩 Tech Stack
 
 - Python (Flask)
-- JavaScript (Chart.js)
-- Simulation-based AI logic
-
-```
-
-## 🎮 Action Space
-
-- 0 → Delay workload (reduces cost impact)
-- 1 → Run workload (immediate execution)
-- 2 → Shift workload (optimize for low carbon periods)
+- React (Vite)
+- Chart.js
+- Docker
+- NumPy
 
 ---
 
+🏁 Final Note
 
-## 🚀 Future Improvements
-
-- Integrate real reinforcement learning (DQN / PPO)
-- Use real cloud workload datasets
-- Add multi-region scheduling optimization
-- Deploy as SaaS dashboard
+This project focuses on real-world decision intelligence, not just optimization — balancing sustainability, cost, and performance dynamically.
 
 ---
-
-## ⚠️ Limitations
-
-- Uses simplified simulation instead of real data center workload
-- AI is rule-based (not fully trained RL model)
-- Carbon data is partially simulated outside UK
-
-## NOTE : Environment simulation and evaluation logic are integrated within app.py for simplicity and efficiency.
-
