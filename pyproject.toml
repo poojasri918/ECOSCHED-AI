@@ -14,4 +14,8 @@ server = "server.app:main"
 
 [build-system]
 requires = ["hatchling"]
+<<<<<<< HEAD
 build-backend = "hatchling.build"
+=======
+build-backend = "hatchling.build"
+>>>>>>> 08d9150 (Final submission - EcoSched AI Dashboard)

@@ -13,3 +13,4 @@ EXPOSE 8000
 
 # Start the application using the 'main' function we will create
 CMD ["python", "-c", "from server.app import main; main()"]
+

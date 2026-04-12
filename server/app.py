@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import numpy as np
 import random
 import requests
@@ -11,16 +12,24 @@ app = FastAPI()
 async def home():
     return HTML
 
+=======
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+import random
+>>>>>>> 08d9150 (Final submission - EcoSched AI Dashboard)
 
-# ---------------- ADD: REPRODUCIBILITY (REQUIRED FOR TOP-TIER) ----------------
-random.seed(42)
-np.random.seed(42)
+app = FastAPI()   # ✅ THIS LINE FIXES YOUR ERROR
 
-CACHE = {
-    "value": None,
-    "time": 0
-}
+# ✅ CORS (required for frontend)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
+<<<<<<< HEAD
 def get_real_carbon(region="UK"):
     try:
         import datetime
@@ -725,3 +734,25 @@ def main():
 
 if __name__ == "__main__":
     main()
+=======
+@app.get("/")
+def home():
+    return {"message": "EcoSched backend running"}
+
+@app.post("/step")
+def step():
+    carbon = round(random.uniform(0.2, 1.0), 2)
+    price = round(random.uniform(0.3, 0.9), 2)
+    temp = round(random.uniform(0.3, 0.8), 2)
+
+    action = "SHIFT" if carbon > 0.6 else "CONTINUE"
+    reward = round(1 - carbon, 2)
+
+    return {
+        "carbon": carbon,
+        "price": price,
+        "temp": temp,
+        "action": action,
+        "reward": reward
+    }
+>>>>>>> 08d9150 (Final submission - EcoSched AI Dashboard)
