@@ -61,15 +61,9 @@ def step_env(action, state):
     }
 # ---------------- POLICY (SMART BUT FAIR) ----------------
 def policy(state):
-<<<<<<< HEAD
-    carbon = state.get["carbon",0.5]
-    temp = state.get["temp",0.5]
-    price = state.get["price",0.5]
-=======
-    carbon = state.get("carbon", 0)
-    price = state.get("price", 0)
-    temp = state.get("temp", 0)
->>>>>>> 08d9150 (Final submission - EcoSched AI Dashboard)
+    carbon = state.get("carbon",0.5)
+    temp = state.get("temp",0.5)
+    price = state.get("price",0.5)
 
     # normalize importance (weights)
     w_carbon = 0.5
