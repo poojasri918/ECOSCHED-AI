@@ -1,24 +1,11 @@
-<<<<<<< HEAD
 import numpy as np
 import random
 import requests
 import uvicorn
 from fastapi import FastAPI,Request
 from fastapi.responses import HTMLResponse,JSONResponse
-
 app = FastAPI()
-
-@app.get("/",response_class=HTMLResponse)
-async def home():
-    return HTML
-
-=======
-from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import random
->>>>>>> 08d9150 (Final submission - EcoSched AI Dashboard)
-
-app = FastAPI()   # ✅ THIS LINE FIXES YOUR ERROR
 
 # ✅ CORS (required for frontend)
 app.add_middleware(
@@ -29,7 +16,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-<<<<<<< HEAD
+
+print("Running coreect file")
 def get_real_carbon(region="UK"):
     try:
         import datetime
@@ -308,7 +296,7 @@ def reset_env():
     env = EcoEnv()
     return (env.state())
 
-@app.get('/step')
+@app.post('/step')
 async def step_env(request:Request):
     global env
 
@@ -401,9 +389,7 @@ def evaluate():
 
 
 # ---------------- ADD: HEALTH CHECK (PRODUCTION TOUCH) ----------------
-@app.get('/health')
-def health():
-    return {"status": "ok"}
+
 
     # ---------------- UI ----------------
 HTML = """
@@ -728,31 +714,17 @@ async function runSim(){
 </html>
 """
 
+@app.get("/",response_class=HTMLResponse)
+async def home():
+    return HTML
+
+@app.get('/health')
+def health():
+    return {"status": "ok"}
+
 # ---------------- RUN ----------------
 def main():
-    uvicorn.run(app, host="0.0.0.0", port=7860)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 if __name__ == "__main__":
     main()
-=======
-@app.get("/")
-def home():
-    return {"message": "EcoSched backend running"}
-
-@app.post("/step")
-def step():
-    carbon = round(random.uniform(0.2, 1.0), 2)
-    price = round(random.uniform(0.3, 0.9), 2)
-    temp = round(random.uniform(0.3, 0.8), 2)
-
-    action = "SHIFT" if carbon > 0.6 else "CONTINUE"
-    reward = round(1 - carbon, 2)
-
-    return {
-        "carbon": carbon,
-        "price": price,
-        "temp": temp,
-        "action": action,
-        "reward": reward
-    }
->>>>>>> 08d9150 (Final submission - EcoSched AI Dashboard)

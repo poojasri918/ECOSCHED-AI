@@ -21,7 +21,7 @@ const fetchData = async () => {
   try {
     setError(false);
 
-    const res = await fetch("http://127.0.0.1:7860/step", {
+    const res = await fetch("http://127.0.0.1:8000/step", {
       method: "POST"
     });
 
