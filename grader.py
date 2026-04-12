@@ -1,7 +1,7 @@
 import requests
 import numpy as np
 
-URL = "http://127.0.0.1:5000/data"
+URL = "http://localhost:8000/data"
 
 def evaluate(task="medium", region="uk", runs=10):
     ai_scores = []
